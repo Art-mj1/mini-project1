@@ -103,7 +103,8 @@ const Headerwrap = styled.div`
     position: relative;
   }
   .search > .inputs {
-    height: 100%;
+    width: 100%;
+    height: 42px;
     font-size: 17px;
     color: #000000;
     white-space: nowrap;
