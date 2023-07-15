@@ -24,13 +24,27 @@ const Headerwrap = styled.div`
     width: 851px;
     height: 100%;
   }
-  img {
+  .logos > .logoImg {
     width: 20%;
     height: 100%;
-    object-fit: contain;
   }
-  .members {
+  .logoImg > a {
+    width: 100%;
+    height: 100%;
+  }
+  .logoImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .navis {
     width: 589px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .membersNavi {
+    width: 370px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -38,12 +52,19 @@ const Headerwrap = styled.div`
     font-size: 25px;
     font-weight: 600;
   }
-  .members > a {
+  .membersNavi > .members {
     width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .members > a {
+    width: 80px;
     color: #ff0090;
   }
   .members .nickname {
-    width: 80px;
+    width: 100%;
     height: auto;
     text-align: center;
     font-size: 20px;
@@ -76,29 +97,29 @@ const Headerwrap = styled.div`
     color: #ffffff;
     text-align: center;
   }
-  .inputs {
-    width: 200px;
+  .search {
+    width: 219px;
     height: 40px;
     position: relative;
   }
-  .inputs input {
-    width: 250px;
+  .search > .inputs {
     height: 100%;
     font-size: 17px;
     color: #000000;
-    padding: 2%;
     white-space: nowrap;
   }
-  .inputs button {
+  .search button {
     border: none;
     background: transparent;
     position: absolute;
-    margin: 12px -31px;
     cursor: pointer;
-  }
-  .inputs svg {
-    font-size: 18px;
     color: #ff0090;
+    font-size: 18px;
+    top: 50%;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    transform: translate(-50%, -50%);
   }
 `;
 const Headers = () => {
@@ -110,27 +131,37 @@ const Headers = () => {
       <div className='headerWrap'>
         <div className='navi'>
           <div className='logos'>
-            <Link to='/'>
-              <img src='/img/OHS-5.png' alt='/main' />
-            </Link>
+            <div className='logoImg'>
+              <Link to='/'>
+                <img src='/img/OHS-5.png' alt='/main' />
+              </Link>
+            </div>
           </div>
-          <ul className='members'>
-            <Link to='/mypage'>
-              <li className='nickname'>어드민님</li>
-            </Link>
-            <Link to='/login'>
-              <li className='login'>로그인</li>
-            </Link>
-            <Link to='/signUp'>
-              <li className='signUp'>회원가입</li>
-            </Link>
-            <Link to='' className='inputs'>
-              <input type='text' placeholder='search in site' />
+          <div className='navis'>
+            <ul className='membersNavi'>
+              <div className='members'>
+                <Link to='/mypage'>
+                  <li className='nickname'>어드민님</li>
+                </Link>
+                <Link to='/login'>
+                  <li className='login'>로그인</li>
+                </Link>
+                <Link to='/signUp'>
+                  <li className='signUp'>회원가입</li>
+                </Link>
+              </div>
+            </ul>
+            <div className='search'>
+              <input
+                type='text'
+                placeholder='search in site'
+                className='inputs'
+              />
               <button onClick={searchItem}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
               </button>
-            </Link>
-          </ul>
+            </div>
+          </div>
         </div>
         <div className='banner'>
           <h3>Oh! Honey Scrooge </h3>

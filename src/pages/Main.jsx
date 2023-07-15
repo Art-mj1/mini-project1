@@ -59,17 +59,25 @@ const Mains = styled.div`
 `;
 const Main = () => {
   const [products, setProducts] = useState([]);
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [img, setImg] = useState("");
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/Products")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
-  }, []);
+  const fetchProducts = async () => {
+    const { data } = await axios.get("http://localhost:4000/Products");
+    setProducts(data);
+  };
+
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/Products")
+  //     .then((response) => {
+  //       setProducts(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was an error!", error);
+  //     });
+  // }, []);
   return (
     <Mains>
       <Headers />
