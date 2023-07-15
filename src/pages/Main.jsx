@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Headers from "./Headers";
 import Footers from "./Footers";
-import axios from "axios";
 
 const Mains = styled.div`
   width: 1440px;
@@ -58,26 +57,11 @@ const Mains = styled.div`
   }
 `;
 const Main = () => {
-  const [products, setProducts] = useState([]);
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [img, setImg] = useState("");
-
-  const fetchProducts = async () => {
-    const { data } = await axios.get("http://localhost:4000/Products");
-    setProducts(data);
-  };
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:4000/Products")
-  //     .then((response) => {
-  //       setProducts(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was an error!", error);
-  //     });
-  // }, []);
+  const Products = [
+    { id: 1, title: "Product1", price: "$49.99", img: "/img/OHS-5.png" },
+    { id: 2, title: "Product2", price: "$49.99", img: "/img/OHS-5.png" },
+    { id: 3, title: "Product3", price: "$49.99", img: "/img/OHS-5.png" },
+  ];
   return (
     <Mains>
       <Headers />
@@ -90,7 +74,7 @@ const Main = () => {
           .map((_, i) => (
             <div className='cardsList' key={i}>
               <div className='cards'>
-                {products.map((product) => {
+                {Products.map((product) => {
                   return (
                     <div className='card' key={product.id}>
                       <img src={product.img} alt='no image' />
